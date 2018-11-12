@@ -42,10 +42,10 @@
 
 ## 7. 구현에 필요한 라이브러리나 기술
 #### 1) 필요한 라이브러리
-- pyqt5 :: GUI 구성을 마우스로 할 수 있는 프로그램을 제공  
-- Selenium :: 웹파싱에 이용  
-- beautifulsoup :: 웹파싱에 이용  
-- OpenCV-Python :: 이미지 처리에 이용  
+- [pyqt5](https://pypi.org/project/PyQt5/) :: GUI 구성을 마우스로 할 수 있는 프로그램을 제공  
+- [Selenium](https://www.seleniumhq.org/) :: 웹파싱에 이용  
+- [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) :: 웹파싱에 이용  
+- [OpenCV-Python](https://opencv.org/) :: 이미지 처리에 이용  
 #### 2) 구현에 필요한 기술
 - 사진을 사이트에 업로드 하여 사진 속에 사용된 컬러의 색상 값을 파싱해오는 기술  
 - 사용자가 입력한 조건에 맞추어서 인테리어 제품을 파싱해오는 기술  
@@ -74,7 +74,7 @@
   2) [이케아](https://www.ikea.com/)
   3) [리모드](http://www.remod.co.kr/)
   4) [디자인 스페이스](http://www.gagu824.com/shop/main/index.php)
-  5) [두닷](https://www.dodot.co.kr/new_shop/main.php &retRef=Y&source=http://blog.naver.com/PostView.nhn%3FblogId=asu15%26logNo=70108077058)
+  5) [두닷](https://www.dodot.co.kr/)
   6) [까유](http://www.kayumall.com/)
   7) [무인양품](http://www.muji.com/kr/)
   8) [마켓엠](http://www.market-m.co.kr/)
