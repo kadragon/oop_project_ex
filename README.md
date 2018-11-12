@@ -80,8 +80,3 @@
   8) [마켓엠](http://www.market-m.co.kr/)
   9) [인디테일](http://www.indetail.co.kr/shop/main/index.php)
   10) [필웰](http://www.feelwell.co.kr/)
-
-<hr>
-#### readme 작성관련 참고하기 [바로가기](https://heropy.blog/2017/09/30/markdown/)
-
-#### 예시 계획서 [[예시 1]](https://docs.google.com/document/d/1hcuGhTtmiTUxuBtr3O6ffrSMahKNhEj33woE02V-84U/edit?usp=sharing) | [[예시 2]](https://docs.google.com/document/d/1FmxTZvmrroOW4uZ34Xfyyk9ejrQNx6gtsB6k7zOvHYE/edit?usp=sharing)
