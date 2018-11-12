@@ -41,7 +41,16 @@
 사용자가 원하는 테마에 따라 인테리어 제품을 소개시켜주고, 프로그램 내에서 사용자가 선택한 관심상품을 모아준다.  
 
 ## 7. 구현에 필요한 라이브러리나 기술
-{pygame, matplotlib,  ...}
+#### 1) 필요한 라이브러리
+- pyqt5 :: GUI 구성을 마우스로 할 수 있는 프로그램을 제공  
+- Selenium :: 웹파싱에 이용  
+- beautifulsoup :: 웹파싱에 이용  
+- OpenCV-Python :: 이미지 처리에 이용  
+#### 2) 구현에 필요한 기술
+- 사진을 사이트에 업로드 하여 사진 속에 사용된 컬러의 색상 값을 파싱해오는 기술  
+- 사용자가 입력한 조건에 맞추어서 인테리어 제품을 파싱해오는 기술  
+- 프로그램 내에서 자유롭게 제품을 둘러보고 선택하게 하는 기술  
+
 
 ## 8. **분업 계획**
 1) 인테리어 데이터셋 제작  
@@ -56,17 +65,23 @@
 
 ## 9. 프로젝트에서 사용하는 사이트  
 #### 1) 컬러 테마를 만들기 위한 사이트
-  1) 인테리어 테마와 사진을 제공하는 사이트(1) [바로가기](https://www.homify.co.kr/rooms/living-room)
-  2) 인테리어 테마와 사진을 제공하는 사이트(2) [바로가기](https://ohou.se/)
-  3) 사진에서 컬러정보를 뽑아오는 사이트 : [바로가기](http://www.colr.org/)
+  1) [인테리어 테마와 사진을 제공하는 사이트(1)](https://www.homify.co.kr/rooms/living-room)
+  2) [인테리어 테마와 사진을 제공하는 사이트(2)](https://ohou.se/)
+  3) [사진에서 컬러정보를 뽑아오는 사이트](http://www.colr.org/)
 
 #### 2) 인테리어 제품 사이트
-  1) 텐바이텐 [바로가기](http://www.10x10.co.kr/shopping/category_list.asp?disp=121102104)
-  2) 이케아 [바로가기](https://www.ikea.com/)
-  3) 리모드 [바로가기](http://www.remod.co.kr/)
+  1) [텐바이텐](http://www.10x10.co.kr/shopping/category_list.asp?disp=121102104)
+  2) [이케아](https://www.ikea.com/)
+  3) [리모드](http://www.remod.co.kr/)
+  4) [디자인 스페이스](http://www.gagu824.com/shop/main/index.php)
+  5) [두닷](https://www.dodot.co.kr/new_shop/main.php &retRef=Y&source=http://blog.naver.com/PostView.nhn%3FblogId=asu15%26logNo=70108077058)
+  6) [까유](http://www.kayumall.com/)
+  7) [무인양품](http://www.muji.com/kr/)
+  8) [마켓엠](http://www.market-m.co.kr/)
+  9) [인디테일](http://www.indetail.co.kr/shop/main/index.php)
+  10) [필웰](http://www.feelwell.co.kr/)
 
 <hr>
-
 #### readme 작성관련 참고하기 [바로가기](https://heropy.blog/2017/09/30/markdown/)
 
 #### 예시 계획서 [[예시 1]](https://docs.google.com/document/d/1hcuGhTtmiTUxuBtr3O6ffrSMahKNhEj33woE02V-84U/edit?usp=sharing) | [[예시 2]](https://docs.google.com/document/d/1FmxTZvmrroOW4uZ34Xfyyk9ejrQNx6gtsB6k7zOvHYE/edit?usp=sharing)
