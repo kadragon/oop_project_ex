@@ -81,3 +81,10 @@
   8) [마켓엠](http://www.market-m.co.kr/)
   9) [인디테일](http://www.indetail.co.kr/shop/main/index.php)
   10) [필웰](http://www.feelwell.co.kr/)
+  
+  배경없는 사이트
+  1) [이케아](https://www.ikea.com/)
+  2) [리모드](http://www.remod.co.kr/)
+  3) [인디테일](http://www.indetail.co.kr/shop/main/index.php) :: 소파제외 사용가능 
+  4) [자주JAJU](http://living.sivillage.com/jaju/display/displayShop?temp=www.jaju.co.kr)
+  5) [모던하우스](http://modernhouse.elandmall.com/main/initMain.action) :: 침구제외 사용 가능
