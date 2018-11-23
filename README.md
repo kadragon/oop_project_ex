@@ -54,7 +54,7 @@
 
 
 ## 8. **분업 계획**
-1) 인테리어 데이터셋 제작 : **지명금**  
+1) 인테리어 데이터셋 제작 : **지명금 & 유현아**  
   - 테마에 따른 컬러차트(색상표 데이터)  
   - 인테리어 제품의 사진, 규격, 테마, 색상정보 데이터  
   
@@ -65,24 +65,10 @@
 3) GUI 제작 : **이준홍(80%) , 지명금(10%), 유현아(10%)**    
 
 ## 9. 프로젝트에서 사용하는 사이트  
-#### 1) 컬러 테마를 만들기 위한 사이트
-  1) [인테리어 테마와 사진을 제공하는 사이트(1)](https://www.homify.co.kr/rooms/living-room)
-  2) [인테리어 테마와 사진을 제공하는 사이트(2)](https://ohou.se/)
-  3) [사진에서 컬러정보를 뽑아오는 사이트](http://www.colr.org/)
+#### 1) 인테리어 테마와 사진을 제공하는 사이트
+  1) [homify](https://www.homify.co.kr/rooms/living-room)  
 
-#### 2) 인테리어 제품 사이트
-  1) [텐바이텐](http://www.10x10.co.kr/shopping/category_list.asp?disp=121102104)
-  2) [이케아](https://www.ikea.com/)
-  3) [리모드](http://www.remod.co.kr/)
-  4) [디자인 스페이스](http://www.gagu824.com/shop/main/index.php)
-  5) [두닷](https://www.dodot.co.kr/)
-  6) [까유](http://www.kayumall.com/)
-  7) [무인양품](http://www.muji.com/kr/)
-  8) [마켓엠](http://www.market-m.co.kr/)
-  9) [인디테일](http://www.indetail.co.kr/shop/main/index.php)
-  10) [필웰](http://www.feelwell.co.kr/)
-  
-  배경없는 사이트
+#### 2) 인테리어 제품 사이트  
   1) [이케아](https://www.ikea.com/)
   2) [리모드](http://www.remod.co.kr/)
   3) [인디테일](http://www.indetail.co.kr/shop/main/index.php) :: 소파제외 사용가능 
