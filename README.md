@@ -45,6 +45,11 @@
 - [Selenium](https://www.seleniumhq.org/) :: 웹파싱에 이용  
 - [beautifulsoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) :: 웹파싱에 이용  
 - [OpenCV-Python](https://opencv.org/) :: 이미지 처리에 이용  
+- [numpy](https://docs.scipy.org/doc/numpy-1.15.1/index.html) :: 행렬연산에 이용(색상추출과정)  
+- [Sklearn.cluster.KMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html) :: 색상추출과정에 이용  
+- [urllib](https://docs.python.org/2/library/urllib.html) :: url 처리과정에 이용  
+- [operator] :: 색상추출과정에 이용  
+- [PIL] :: 이미지 처리에 이용  
   
 #### 2) 구현에 필요한 기술
 - 사진을 사이트에 업로드 하여 사진 속에 사용된 컬러의 색상 값을 파싱해오는 기술  
