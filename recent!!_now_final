@@ -1,0 +1,393 @@
+import pygame
+from pygame import *
+from time import sleep, time
+import random
+
+baller = [0 for i in range(6)]
+RED = (255, 0, 0)
+Green = (100, 250, 100)
+pad_width = 1024
+pad_height = 512
+player_x = 0
+player_y = 0
+score = [0, 0]
+
+x = [0 for i in range(6)]
+y = [0 for i in range(6)]
+ball_x = 0
+ball_y = 0
+midt = 5
+endt = 10
+midterm = True
+endterm = True
+ireal = 7
+jreal = 7
+
+
+def tackle(player_x, player_y):
+    global ball_x, ball_y
+    if abs(ball_x - player_x) <= 40 and abs(ball_y - player_y) <= 40:
+        able = random.randrange(0, 6)
+        if able >= 4:
+            ball_x = player_x
+            ball_y = player_y
+            ball_move(ball_x, ball_y)
+
+
+def ball_move(x, y):
+    global image_ball, ball_x, ball_y
+    pygame.mixer.Sound.play(shoot_sound)
+    ball_x = x
+    ball_y = y
+    gamepad.blit(image_ball, (x, y))
+
+
+def ball_direction(player_x, player_y, ball_x, ball_y):
+    if player_x - ball_x > 0:
+        if player_y - ball_y > 0:
+            return 0  # 'Ball LeftUp'
+        if player_y - ball_y == 0:
+            return 1  # 'Ball Left'
+        if player_y - ball_y < 0:
+            return 2  # 'Ball LeftDown'
+    if player_x - ball_x == 0:
+        if player_y - ball_y > 0:
+            return 3  # 'Ball Up'
+        if player_y - ball_y == 0:
+            return 4  # 'Ball Stop'
+        if player_y - ball_y < 0:
+            return 5  # 'Ball Down'
+    if player_x - ball_x < 0:
+        if player_y - ball_y > 0:
+            return 6  # 'Ball RightUp'
+        if player_y - ball_y == 0:
+            return 7  # 'Ball Right'
+        if player_y - ball_y < 0:
+            return 8  # 'Ball RightDown'
+
+
+def ball_pass(player_x, player_y, dir, shoot_able):
+    if shoot_able:
+        dx = [-12, -12, -12, 0, 0, 0, 12, 12, 12]
+        dy = [-12, 0, 12, -12, 0, 12, -12, 0, 12]
+
+        for i in range(1, 30):
+            ball_move(player_x + dx[dir] * i, player_y + dy[dir] * i)
+            pygame.display.update()
+
+
+def throw_in(balltaker):
+    global ball_x, ball_y, x, y, whistle_sound
+    pygame.mixer.Sound.play(whistle_sound)
+    dispMessage('Throw in')
+    sleep(0.5)
+    if 0 <= balltaker <= 2:
+        who = random.randrange(3, 6)
+    else:
+        who = random.randrange(0, 3)
+
+    if ball_x < 50:
+        x[balltaker] += 90
+        ball_x = 60
+        ball_move(ball_x, ball_y)
+    if ball_x > 974:
+        x[balltaker] -= 90
+        ball_x = 954
+        ball_move(ball_x, ball_y)
+    if ball_y < 22.5:
+        y[balltaker] += 90
+        ball_y = 32.5
+        ball_move(ball_x, ball_y)
+    if ball_y > 480.5:
+        y[balltaker] -= 90
+        ball_y = 470.5
+        ball_move(ball_x, ball_y)
+    x[who] = ball_x
+    y[who] = ball_y
+
+
+def dispMessage(text):
+    global gamepad
+    textfont = pygame.font.Font('freesansbold.ttf', 80)
+    text = textfont.render(text, True, RED)
+    textpos = text.get_rect()
+    textpos.center = (pad_width / 2, pad_height / 2)
+    gamepad.blit(text, textpos)
+    pygame.display.update()
+    sleep(2)
+
+
+def goalchcker():
+    global ball_x, ball_y, score
+    if ((0 < ball_x < 50) or (949 < ball_x < 1024)) and (206 < ball_y < 306):
+        pygame.mixer.music.fadeout(2000)
+        dispMessage('Goal!!')
+        if 0 < ball_x < 50:
+            score[1] += 1
+        else:
+            score[0] += 1
+        return True
+    elif ((0 < ball_x < 120) or (904 < ball_x < 1024)) and (106 < ball_y < 406):
+        pass
+    #보통 골대 가까이 가면 소리 커지거나 군중 소리 나던데...
+
+
+def ballchecker(shoot, xchange, ychange):
+    global x, y, ball_x, ball_y, baller
+    for i in range(6):
+        baller[i] = 0
+    for i in range(6):
+        if (abs(ball_x - x[i]) <= 20 and abs(ball_y - y[i]) <= 20) and not shoot:
+            ball_x = x[i]
+            ball_y = y[i]
+        elif(abs(ball_x - x[i]) <= 20 and abs(ball_y - y[i]) <= 20) and shoot:
+            ball_x = x[i] + 2 * xchange
+            ball_y = y[i] + 2 * ychange
+        if abs(ball_x - x[i]) <= 30 and abs(ball_y - y[i]) <= 30:
+            baller[i] = 1
+
+
+def time_checker():
+    global gamepad, midterm
+    image_middle = pygame.image.load('mid.png')
+    gamepad.blit(image_middle, (0, 0))
+    pygame.display.update()
+    pygame.mixer.music.fadeout(2000)
+    sleep(10)
+    midterm = False
+
+def end_checker():
+    global gamepad, endterm
+    image_end = pygame.image.load('end.png')
+    gamepad.blit(image_end, (0, 0))
+    pygame.display.update()
+    pygame.mixer.music.fadeout(2000)
+    sleep(10)
+    endterm = False
+
+def show_dis_play():
+    global x, y, ball_x, ball_y, gamepad, image, image_ball, start_time, midt, endt
+
+    for i in range(6):
+        gamepad.blit(image[i], (x[i], y[i]))
+    gamepad.blit(image_ball, (ball_x, ball_y))
+
+    delta_time = int(time() - start_time)
+
+    if delta_time // 60 == midt:
+        time_checker()
+        midt += 10
+    elif delta_time // 60 == endt:
+        end_checker()
+        endt +=5
+
+    textfont = pygame.font.Font('freesansbold.ttf', 20)
+    text = textfont.render('Time %02d : %02d     Score %d : %d' % (delta_time // 60, delta_time % 60, score[0], score[1]), True, RED)
+    textpos = text.get_rect()
+    textpos.center = (pad_width / 2, 16)
+    gamepad.blit(text, textpos)
+    pygame.display.update()
+
+
+def out_check():
+    global ball_x, ball_y
+    if ball_x < 50 or ball_x > 974 or ball_y < 22.5 or ball_y > 480.5:
+        return True
+    else:
+        return False
+
+
+def runGame():
+    global x, y, ball_x, ball_y, gamepad, baller, image_map, score, start_time, midterm, endterm, ireal, jreal
+
+    start_time = time()
+
+    while True:
+        pygame.init()
+        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.Sound.play(start_sound)
+        pygame.mixer.music.load('bgm.wav')
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(5.0)
+
+        shooter_x = 0
+        shooter_y = 0
+        x = [396, 191, 191, 601, 806, 806]
+        y = [240, 112, 368, 240, 112, 368]
+        ball_x = 498
+        ball_y = 240
+        x_change = [0 for i in range(6)]
+        y_change = [0 for i in range(6)]
+        ball_x_change = 0
+        ball_y_change = 0
+
+        gamepad.blit(image_map, (0, 0))
+        show_dis_play()
+        pygame.display.update()
+        dispMessage('%d : %d' % (score[0], score[1]))
+
+        while True:
+            for event in pygame.event.get():
+                shoot_able = False
+                ballchecker(0, 0, 0)
+                for i in range(6):
+                    if baller[i] == 1:
+                        shoot_able = True
+                        shooter_x = x[i]
+                        shooter_y = y[i]
+
+                dir = ball_direction(shooter_x, shooter_y, ball_x, ball_y)
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
+                key = [[K_2, K_q, K_w, K_e], [K_5, K_r, K_t, K_y], [K_8, K_u, K_i, K_o], [K_s, K_z, K_x, K_c],
+                       [K_g, K_v, K_b, K_n], [K_UP, K_LEFT, K_DOWN, K_RIGHT]]
+
+                if event.type == pygame.KEYDOWN:
+                    for i in range(6):
+                        player = key[i]
+                        for j in range(4):
+                            direction = player[j]
+                            if event.key == direction:
+                                if j is 0:
+                                    y_change[i] = -5
+                                    ball_y_change = -10
+                                if j is 1:
+                                    x_change[i] = -5
+                                    ball_x_change = -10
+                                if j is 2:
+                                    y_change[i] = 5
+                                    ball_y_change = 10
+                                if j is 3:
+                                    x_change[i] = 5
+                                    ball_x_change = 10
+
+
+                if event.type == pygame.KEYUP:
+                    for i in range(6):
+                        player = key[i]
+                        for j in range(4):
+                            direction = player[j]
+                            if event.key == direction:
+                                if j % 2:
+                                    x_change[i] = 0
+                                    ball_x_change = 0
+                                else:
+                                    y_change[i] = 0
+                                    ball_y_change = 0
+
+                shoot = False
+                if event.type == pygame.KEYDOWN:
+                    key_shoot= [K_3, K_6, K_9, K_d, K_h, K_SPACE]
+                    ireal = 7
+                    jreal = 7
+
+                    for i in range(6):
+                        if baller[i] == 1:
+                            ireal = i
+                    for j in range(6):
+                        if event.key == key_shoot[j]:
+                            jreal = j
+
+                    if ireal == jreal:
+                        ball_pass(ball_x, ball_y, dir, shoot_able)
+                        shoot = True
+
+                key_tackle = [K_1, K_4, K_7, K_a, K_f, K_LCTRL]
+                if event.type == pygame.KEYDOWN:
+                    for i in range(6):
+                        who = key_tackle[i]
+                        if event.key == who:
+                            tackle(x[i], y[i])
+
+            for i in range(6):
+                x[i] += x_change[i]
+                if x[i] < 0:
+                    x[i] = 0
+                if x[i] > 1014:
+                    x[i] = 1014
+
+                y[i] += y_change[i]
+                if y[i] < 10:
+                    y[i] = 10
+                if y[i] > 502:
+                    y[i] = 502
+
+            for i in range(6):
+                if baller[i] == 1:
+                    ball_x += ball_x_change
+                    ball_y += ball_y_change
+                    if ball_x < 10:
+                        ball_x = 10
+                    if ball_x > 1014:
+                        ball_x = 1014
+                    if ball_y < 10:
+                        ball_y = 10
+                    if ball_y > 502:
+                        ball_y = 502
+
+            ballchecker(shoot, ball_x_change, ball_y_change)
+
+            if goalchcker():
+                break
+            if not midterm:
+                midterm = True
+                break
+            if not endterm:
+                endterm = True
+                break
+            if out_check():
+                dribbleout = 0
+                for i in range(6):
+                    if baller[i] == 1:
+                        dribbleout = 1
+                        throw_in(i)
+                if dribbleout == 0:
+                    throw_in(ireal)
+
+            gamepad.blit(image_map, (0, 0))
+            show_dis_play()
+            pygame.display.update()
+            clock.tick(60)
+
+
+def intro_screen():
+    image_intro = pygame.image.load('intro.png')
+    gamepad.blit(image_intro, (0, 0))
+    pygame.display.update()
+    pygame.mixer.music.load('intro.wav')
+    pygame.mixer.music.play(-1)
+    crashed = False
+    while not crashed:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                crashed = True
+                break
+            if event.type == pygame.KEYDOWN:
+                if event.key == K_SPACE:
+                    runGame()
+
+
+def initGame():
+    global gamepad, image, image_ball, clock, image_goalsign, bgm_sound, shoot_sound, crowd_sound, start_sound, whistle_sound, image_map
+
+    pygame.init()
+    gamepad = pygame.display.set_mode((pad_width, pad_height))
+    image = list()
+    pygame.display.set_caption('PyFootball')
+    bgm_sound = pygame.mixer.Sound('bgm.wav')
+    shoot_sound = pygame.mixer.Sound('shoot.wav')
+    crowd_sound = pygame.mixer.Sound('crowd.wav')
+    start_sound = pygame.mixer.Sound('start.wav')
+    whistle_sound = pygame.mixer.Sound('whistle.wav')
+
+    for i in range(6):
+        image.append(pygame.image.load('image%d.png' % (i + 1)))
+    image_ball = pygame.image.load('image_ball.png')
+    image_goalsign = pygame.image.load('image_goalsign.png')
+    image_map = pygame.image.load('FutsalMap.png')
+    clock = pygame.time.Clock()
+    intro_screen()
+
+initGame()
