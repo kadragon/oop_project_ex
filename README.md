@@ -44,6 +44,13 @@ thread, pygame
 3. 키보드로 제어 가능한 기능은 위치 이동, 슛, 패스, 태클이다.
 4. 태클할 때 공보다 플레이어에 먼저 접촉하면 파울로 판정한다.
 
+## 10. 실행 방법
+1. https://drive.google.com/open?id=1BpccwUTOk1CDg_V4DMTHWEvpIdkT3qHn 로 접근하여 images_and_songs.zip 파일을 다운받는다. (용량이 커서 Github에 업로드가 불가함)
+2. Github의 Final.py를 다운받는다.
+3. 두 파일이 같은 상위 폴더 아래에 있음을 확인한다.
+4. Pygame library를 다운받는다.
+5. 실행한다.
+
 
 <hr>
 
