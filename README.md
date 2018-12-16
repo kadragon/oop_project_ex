@@ -54,6 +54,7 @@ thread, pygame
 음원 파일 출처 
 - Intro song: Blur - Song 2 - FIFA 98 Soundtrack - HD
 - BGM song: Best soccer song ever
+
 사진 파일 출처
 - Intro display - https://www.youtube.com/embed/pCVF0CSRTYA
 - sportsmanship display - http://www.seoul.co.kr/news/newsView.php?id=20180701500014
