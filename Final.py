@@ -484,7 +484,7 @@ def intro_screen():
 
 
 def initGame():
-    global gamepad, image, image_ball, clock, image_goalsign, bgm_sound, shoot_sound, crowd_sound, start_sound, whistle_sound, image_map, sportsmanship_score
+    global gamepad, image, image_ball, clock, bgm_sound, shoot_sound, start_sound, whistle_sound, image_map, sportsmanship_score
     sportsmanship_score=100
     pygame.init()
     gamepad = pygame.display.set_mode((pad_width, pad_height))
@@ -492,14 +492,12 @@ def initGame():
     pygame.display.set_caption('PyFootball')
     bgm_sound = pygame.mixer.Sound('bgm.wav')
     shoot_sound = pygame.mixer.Sound('shoot.wav')
-    crowd_sound = pygame.mixer.Sound('crowd.wav')
     start_sound = pygame.mixer.Sound('start.wav')
     whistle_sound = pygame.mixer.Sound('whistle.wav')
 
     for i in range(6):
         image.append(pygame.image.load('image%d.png' % (i + 1)))
     image_ball = pygame.image.load('image_ball.png')
-    image_goalsign = pygame.image.load('image_goalsign.png')
     image_map = pygame.image.load('FutsalMap.png')
     clock = pygame.time.Clock()
     intro_screen()
