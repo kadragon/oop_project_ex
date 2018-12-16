@@ -89,7 +89,7 @@ def tackle(player_x, player_y, player):
             ball_x = player_x
             ball_y = player_y
             ball_move(ball_x, ball_y)
-            penalty_num = random.randrange(0, 3)# 태클 시 플레이어에게 먼저 닿을 확률이  1/3이다. 즉 파울이 될 확률이 1/3이다.
+            penalty_num = random.randrange(0, 3)  # 태클 시 플레이어에게 먼저 닿을 확률이 1/3이다. 즉 파울이 될 확률이 1/3이다.
             if penalty_num == 1:
                 penalty(player)
 
@@ -238,15 +238,29 @@ def time_checker():
     midterm = False
     start_time += 10
 
+
 def end_checker():
-    global gamepad, endterm
+    global gamepad, endterm, score
     image_end = pygame.image.load('end.png')
     gamepad.blit(image_end, (0, 0))
     pygame.display.update()
     pygame.mixer.music.fadeout(2000)
+    if score[0] > score[1]:
+        winner = 'Blue'
+    elif score[0] < score[1]:
+        winner = 'Red'
+    else:
+        winner = 'None'
+    textfont = pygame.font.Font('freesansbold.ttf', 80)
+    text = textfont.render(winner + '            ' + ('Blue' if random.randrange(0, 1) is 0 else 'Red') + ' ' + str(random.randrange(1, 3)), True, RED)
+    textpos = text.get_rect()
+    textpos.center = (pad_width / 2, pad_height / 2)
+    gamepad.blit(text, textpos)
+    pygame.display.update()
     sleep(10)
     endterm = False
     exit()
+
 
 def show_dis_play():
     global x, y, ball_x, ball_y, gamepad, image, image_ball, start_time, midt, endt, sportsmanship_score
