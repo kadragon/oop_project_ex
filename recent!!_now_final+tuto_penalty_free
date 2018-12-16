@@ -211,9 +211,6 @@ def goalchcker():
         else:
             score[0] += 1
         return True
-    elif ((0 < ball_x < 120) or (904 < ball_x < 1024)) and (106 < ball_y < 406):
-        pass
-    #보통 골대 가까이 가면 소리 커지거나 군중 소리 나던데...
 
 
 def ballchecker(shoot, xchange, ychange):
