@@ -320,7 +320,8 @@ def runGame():
         ball_y_change = 0
 
         gamepad.blit(image_map, (0, 0))
-        show_dis_play()        pygame.display.update()
+        show_dis_play()
+        pygame.display.update()
         dispMessage('%d : %d' % (score[0], score[1]), True)
 
         while True:
